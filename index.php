@@ -73,21 +73,28 @@ $faqs = [ // primo livello: array contenitore con indici numerici
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google FAQs</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="container">
 
-    <!-- stampo con un ciclo i dati all'interno dei singoli array associativi sfruttando la chiave ($index) -->
-    <?php foreach($faqs as $index => $faq) { ?>
+    <div class="content">
+
+        <div class="logo">
+            <img src="google.svg" alt="Google Logo" class="logo-img">
+        </div>
+
+        <!-- stampo con un ciclo i dati all'interno dei singoli array associativi sfruttando la chiave ($index) -->
+        <?php foreach($faqs as $index => $faq) { ?>
 
         <!-- stampa di tutte le domande -->
-        <h2><?php echo $faq["question"]?></h2>
+        <h2 class="questions"><?php echo $faq["question"]?></h2>
 
         <!-- controllo per stabilire se la risposta sia una singola stringa o un array: se array (domanda 3) -> stampa quanto sotto: -->
         <?php if(is_array($faq["answer"])){ ?>
             
             <!-- risposta alla domanda tre -->
             <h3><?php echo $faq["answer"]["intro"] ?></h3>
-            <ol>
+            <ol class="list">
                 <li><?php echo $faq["answer"]["numbers"]["one"] ?>
 
                     <ul>
@@ -100,17 +107,21 @@ $faqs = [ // primo livello: array contenitore con indici numerici
                     </ul>
 
                 </li>
+
                 <li><?php echo $faq["answer"]["numbers"]["two"] ?></li>
             </ol>
+
             <p><?php echo $faq["answer"]["paragraph"] ?></p>
              <!-- risposta alla domanda tre -->
 
-        <!-- risposta di tutte le altre risposte -->
-        <?php } else { ?> 
-            <p><?php echo $faq["answer"] ?></p>
-        <?php } ?>
+            <!-- risposta di tutte le altre domande -->
+            <?php } else { ?> 
+                <p><?php echo $faq["answer"] ?></p>
+            <?php } ?>
 
-    <?php } ?>
+        <?php } ?>
+    </div>
+    
     
 </body>
 </html>
