@@ -105,7 +105,7 @@ $faqs = [ // primo livello: array contenitore con indici numerici
             <p><?php echo $faq["answer"]["paragraph"] ?></p>
              <!-- risposta alla domanda tre -->
 
-        <!-- risposta di tutte le altre domande -->
+        <!-- risposta di tutte le altre risposte -->
         <?php } else { ?> 
             <p><?php echo $faq["answer"] ?></p>
         <?php } ?>
