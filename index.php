@@ -76,9 +76,40 @@ $faqs = [ // primo livello: array contenitore con indici numerici
 </head>
 <body>
 
+    <!-- stampo con un ciclo i dati all'interno dei singoli array associativi sfruttando la chiave ($index) -->
     <?php foreach($faqs as $index => $faq) { ?>
+
+        <!-- stampa di tutte le domande -->
         <h2><?php echo $faq["question"]?></h2>
-        <p><?php echo $faq["answer"] ?></p>
+
+        <!-- controllo per stabilire se la risposta sia una singola stringa o un array: se array (domanda 3) -> stampa quanto sotto: -->
+        <?php if(is_array($faq["answer"])){ ?>
+            
+            <!-- risposta alla domanda tre -->
+            <h3><?php echo $faq["answer"]["intro"] ?></h3>
+            <ol>
+                <li><?php echo $faq["answer"]["numbers"]["one"] ?>
+
+                    <ul>
+                        <li>
+                            <?php echo $faq["answer"]["letters"]["letterA"]?>
+                        </li>
+                        <li>
+                            <?php echo $faq["answer"]["letters"]["letterB"]?>
+                        </li>
+                    </ul>
+
+                </li>
+                <li><?php echo $faq["answer"]["numbers"]["two"] ?></li>
+            </ol>
+            <p><?php echo $faq["answer"]["paragraph"] ?></p>
+             <!-- risposta alla domanda tre -->
+
+        <!-- risposta di tutte le altre domande -->
+        <?php } else { ?> 
+            <p><?php echo $faq["answer"] ?></p>
+        <?php } ?>
+
     <?php } ?>
     
 </body>
